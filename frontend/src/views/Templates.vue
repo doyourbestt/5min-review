@@ -37,7 +37,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { getTemplates, deleteTemplate as deleteTemplateApi } from '@api'
+import { getTemplates, deleteTemplate as deleteTemplateApi } from '../api'
 
 const templates = ref([])
 const showCreateModal = ref(false)

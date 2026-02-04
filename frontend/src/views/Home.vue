@@ -103,8 +103,8 @@
 
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@stores/user'
-import { getOverview, getTodayReview, getRecentReviews } from '@api'
+import { useUserStore } from '../stores/user'
+import { getOverview, getTodayReview, getRecentReviews } from '../api'
 import dayjs from 'dayjs'
 
 const router = useRouter()

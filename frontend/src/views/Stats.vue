@@ -66,7 +66,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { getOverview, getTrends, getTemplateUsage } from '@api'
+import { getOverview, getTrends, getTemplateUsage } from '../api'
 
 const overview = ref(null)
 const trends = ref([])

@@ -183,7 +183,7 @@
 import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import dayjs from 'dayjs'
-import { getTemplates, createReview } from '@api'
+import { getTemplates, createReview } from '../api'
 
 const router = useRouter()
 

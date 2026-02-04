@@ -91,7 +91,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import dayjs from 'dayjs'
-import { getCheckinStatus, getCalendarStats, getReviews } from '@api'
+import { getCheckinStatus, getCalendarStats, getReviews } from '../api'
 
 const router = useRouter()
 
