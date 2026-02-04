@@ -34,7 +34,11 @@ db.init_app(app)
 jwt.init_app(app)
 cors = CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:5173", "http://127.0.0.1:5173"],
+        "origins": [
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+            "https://5min-review-frontend.onrender.com"
+        ],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]
     }
