@@ -21,7 +21,7 @@ services:
   # 前端服务
   - type: web
     name: 5min-review-frontend
-    buildCommand: npm run build
+    buildCommand: cd frontend && npm install && npm run build
     publishDir: frontend/dist
     envVars:
       - key: VITE_API_BASE_URL
