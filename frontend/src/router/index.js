@@ -8,14 +8,14 @@
  */
 
 import { createRouter, createWebHistory } from 'vue-router'
-import { useUserStore } from '@stores/user'
+import { useUserStore } from '../stores/user'
 
 // AI维护注意点: 使用动态导入实现路由懒加载
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@views/Home.vue'),
+    component: () => import('../views/Home.vue'),
     meta: {
       title: '首页',
       requiresAuth: true
@@ -24,7 +24,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@views/Login.vue'),
+    component: () => import('../views/Login.vue'),
     meta: {
       title: '登录',
       requiresAuth: false,
@@ -34,7 +34,7 @@ const routes = [
   {
     path: '/review',
     name: 'Review',
-    component: () => import('@views/ReviewForm.vue'),
+    component: () => import('../views/ReviewForm.vue'),
     meta: {
       title: '开始复盘',
       requiresAuth: true
@@ -43,7 +43,7 @@ const routes = [
   {
     path: '/checkin',
     name: 'CheckIn',
-    component: () => import('@views/CheckIn.vue'),
+    component: () => import('../views/CheckIn.vue'),
     meta: {
       title: '打卡日历',
       requiresAuth: true
@@ -52,7 +52,7 @@ const routes = [
   {
     path: '/templates',
     name: 'Templates',
-    component: () => import('@views/Templates.vue'),
+    component: () => import('../views/Templates.vue'),
     meta: {
       title: '模板管理',
       requiresAuth: true
@@ -61,7 +61,7 @@ const routes = [
   {
     path: '/stats',
     name: 'Stats',
-    component: () => import('@views/Stats.vue'),
+    component: () => import('../views/Stats.vue'),
     meta: {
       title: '数据统计',
       requiresAuth: true
@@ -80,7 +80,7 @@ const routes = [
   {
     path: '/viz/paste',
     name: 'PasteReview',
-    component: () => import('@views/PasteReview.vue'),
+    component: () => import('../views/PasteReview.vue'),
     meta: {
       title: '粘贴复盘',
       requiresAuth: true
@@ -89,7 +89,7 @@ const routes = [
   {
     path: '/viz/board',
     name: 'VisualizationBoard',
-    component: () => import('@views/VisualizationBoard.vue'),
+    component: () => import('../views/VisualizationBoard.vue'),
     meta: {
       title: '复盘看板',
       requiresAuth: true
@@ -99,7 +99,7 @@ const routes = [
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: () => import('@views/NotFound.vue'),
+    component: () => import('../views/NotFound.vue'),
     meta: {
       title: '页面不存在'
     }
