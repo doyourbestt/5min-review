@@ -99,50 +99,50 @@ api.interceptors.response.use(
 // ==================== API方法导出 ====================
 
 // 认证相关
-export const login = (data) => api.post('/api/auth/login', data)
-export const register = (data) => api.post('/api/auth/register', data)
-export const getProfile = () => api.get('/api/auth/profile')
-export const updateProfile = (data) => api.put('/api/auth/profile', data)
+export const login = (data) => api.post('/auth/login', data)
+export const register = (data) => api.post('/auth/register', data)
+export const getProfile = () => api.get('/auth/profile')
+export const updateProfile = (data) => api.put('/auth/profile', data)
 
 // 模板相关
-export const getTemplates = (params) => api.get('/api/templates', { params })
-export const getTemplate = (id) => api.get(`/api/templates/${id}`)
-export const createTemplate = (data) => api.post('/api/templates', data)
-export const updateTemplate = (id, data) => api.put(`/api/templates/${id}`, data)
-export const deleteTemplate = (id) => api.delete(`/api/templates/${id}`)
+export const getTemplates = (params) => api.get('/templates', { params })
+export const getTemplate = (id) => api.get(`/templates/${id}`)
+export const createTemplate = (data) => api.post('/templates', data)
+export const updateTemplate = (id, data) => api.put(`/templates/${id}`, data)
+export const deleteTemplate = (id) => api.delete(`/templates/${id}`)
 
 // 复盘相关
-export const getReviews = (params) => api.get('/api/reviews', { params })
-export const getReview = (id) => api.get(`/api/reviews/${id}`)
-export const createReview = (data) => api.post('/api/reviews', data)
-export const deleteReview = (id) => api.delete(`/api/reviews/${id}`)
-export const getTodayReview = () => api.get('/api/reviews/today')
-export const getRecentReviews = (params) => api.get('/api/reviews', { params })
-export const getCheckinStatus = () => api.get('/api/reviews/checkin')
+export const getReviews = (params) => api.get('/reviews', { params })
+export const getReview = (id) => api.get(`/reviews/${id}`)
+export const createReview = (data) => api.post('/reviews', data)
+export const deleteReview = (id) => api.delete(`/reviews/${id}`)
+export const getTodayReview = () => api.get('/reviews/today')
+export const getRecentReviews = (params) => api.get('/reviews', { params })
+export const getCheckinStatus = () => api.get('/reviews/checkin')
 
 // 统计相关
-export const getOverview = () => api.get('/api/stats/overview')
-export const getCalendarStats = (params) => api.get('/api/stats/calendar', { params })
-export const getTrends = (params) => api.get('/api/stats/trends', { params })
-export const getFieldStats = (params) => api.get('/api/stats/fields', { params })
-export const getTemplateUsage = () => api.get('/api/stats/templates')
+export const getOverview = () => api.get('/stats/overview')
+export const getCalendarStats = (params) => api.get('/stats/calendar', { params })
+export const getTrends = (params) => api.get('/stats/trends', { params })
+export const getFieldStats = (params) => api.get('/stats/fields', { params })
+export const getTemplateUsage = () => api.get('/stats/templates')
 
 // 可视化相关
-export const parseMarkdown = (data) => api.post('/api/viz/parse', data)
-export const saveReview = (data) => api.post('/api/viz/save', data)
-export const getReviewByDate = (date) => api.get(`/api/viz/reviews/${date}`)
-export const getAvailableDates = () => api.get('/api/viz/dates')
+export const parseMarkdown = (data) => api.post('/viz/parse', data)
+export const saveReview = (data) => api.post('/viz/save', data)
+export const getReviewByDate = (date) => api.get(`/viz/reviews/${date}`)
+export const getAvailableDates = () => api.get('/viz/dates')
 export const uploadAvatar = (sharerName, file) => {
   const formData = new FormData()
   formData.append('file', file)
-  return api.post(`/api/viz/upload-avatar/${sharerName}`, formData, {
+  return api.post(`/viz/upload-avatar/${sharerName}`, formData, {
     headers: { 'Content-Type': 'multipart/form-data' }
   })
 }
-export const likeInsight = (data) => api.post('/api/viz/like', data)
-export const getLikesByInsight = (insightId) => api.get(`/api/viz/likes/${insightId}`)
-export const getLikesByTopic = (topic) => api.get('/api/viz/likes/by-topic', { params: { topic } })
-export const getLikesBySharer = (sharerName) => api.get(`/api/viz/likes/by-sharer/${sharerName}`)
+export const likeInsight = (data) => api.post('/viz/like', data)
+export const getLikesByInsight = (insightId) => api.get(`/viz/likes/${insightId}`)
+export const getLikesByTopic = (topic) => api.get('/viz/likes/by-topic', { params: { topic } })
+export const getLikesBySharer = (sharerName) => api.get(`/viz/likes/by-sharer/${sharerName}`)
 
 // 默认导出实例
 export default api
