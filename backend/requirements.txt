@@ -23,6 +23,7 @@ python-dateutil==2.9.0
 
 # 图像处理
 Pillow==11.0.0
+python-multipart==0.0.20
 
 # 测试依赖
 pytest==8.3.4
