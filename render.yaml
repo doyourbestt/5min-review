@@ -1,0 +1,28 @@
+# Render部署配置
+# 将此文件推送到GitHub，然后导入Render创建服务
+
+services:
+  # 后端服务
+  - type: web
+    name: 5min-review-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn -w 4 -b 0.0.0.0:5000 app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        value: 54eed8060ee1a66090242bb92c4c374a328772776f57088c2c61a4602e0cbd35
+      - key: JWT_SECRET_KEY
+        value: 46f861c351ab6faaaf56a31bfff1ba1269783622e4f8bef4c1de032c4c34a2aa
+      - key: DATABASE_URL
+        value: sqlite:///review_app.db
+
+  # 前端服务
+  - type: web
+    name: 5min-review-frontend
+    buildCommand: npm run build
+    publishDir: frontend/dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://5min-review-backend.onrender.com
