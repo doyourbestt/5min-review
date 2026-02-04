@@ -9,6 +9,8 @@ services:
     buildCommand: pip install -r backend/requirements.txt
     startCommand: gunicorn -w 4 -b 0.0.0.0:5000 app:app
     envVars:
+      - key: PYTHONPATH
+        value: /opt/render/project/src/backend
       - key: FLASK_ENV
         value: production
       - key: SECRET_KEY
