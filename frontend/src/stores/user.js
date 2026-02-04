@@ -10,7 +10,7 @@
 
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { login as loginApi, register as registerApi, getProfile } from '../api'
+import { login as loginApi, register as registerApi, getProfile } from './api'
 
 // AI维护注意点: localStorage key命名需避免冲突
 const TOKEN_KEY = '5min_review_token'
