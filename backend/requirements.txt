@@ -4,6 +4,8 @@ Flask==3.1.0
 Flask-SQLAlchemy==3.1.1
 Flask-JWT-Extended==4.7.1
 Flask-CORS==5.0.0
+fastapi==0.115.5
+uvicorn==0.32.0
 
 # WSGI服务器
 Werkzeug==3.1.3
