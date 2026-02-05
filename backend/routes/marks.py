@@ -24,15 +24,20 @@ def parse_markdown_to_cards(markdown_text):
     解析markdown文本为卡片列表
     
     格式:
+    # 可选标题（会被忽略）
     ## 姓名 [emoji]
     - 标签1：内容1
     - 标签2：内容2
+    
+    ## 姓名2 [emoji]
+    - 内容...
     """
     cards = []
     lines = markdown_text.strip().split('\n')
     
     current_card = None
     current_content = []
+    in_header_section = True  # 是否在标题区域（前几行的非##内容）
     
     for line in lines:
         line = line.strip()
@@ -43,8 +48,12 @@ def parse_markdown_to_cards(markdown_text):
         # 匹配 ## 姓名 [emoji] 格式
         header_match = re.match(r'^##\s+(.+?)(?:\s+([^\s]+))?\s*$', line)
         if header_match:
+            # 跳过小彩蛋等非卡片内容
+            if '小彩蛋' in header_match.group(1):
+                continue
+            
             # 保存之前的卡片
-            if current_card:
+            if current_card and current_content:
                 current_card['content'] = '\n'.join(current_content)
                 cards.append(current_card)
             
@@ -57,14 +66,24 @@ def parse_markdown_to_cards(markdown_text):
                 'content': ''
             }
             current_content = []
+            in_header_section = False
         
-        elif line.startswith('- '):
-            content = line[2:].strip()
-            if content:
-                current_content.append(content)
+        elif not in_header_section and current_card:
+            # 收集内容行
+            if line.startswith('- '):
+                content = line[2:].strip()
+                if content:
+                    current_content.append(content)
+            elif line.startswith('• ') or line.startswith('* '):
+                content = line[2:].strip()
+                if content:
+                    current_content.append(content)
+            elif current_content:
+                # 如果不是列表项但有已有内容，追加到上一行
+                current_content[-1] += ' ' + line
     
     # 保存最后一张卡片
-    if current_card:
+    if current_card and current_content:
         current_card['content'] = '\n'.join(current_content)
         cards.append(current_card)
     
