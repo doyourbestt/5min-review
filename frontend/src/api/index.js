@@ -144,5 +144,13 @@ export const getLikesByInsight = (insightId) => api.get(`/api/viz/likes/${insigh
 export const getLikesByTopic = (topic) => api.get('/api/viz/likes/by-topic', { params: { topic } })
 export const getLikesBySharer = (sharerName) => api.get(`/api/viz/likes/by-sharer/${sharerName}`)
 
+// 复盘标记相关
+export const parseMarkdown = (markdown) => api.post('/api/marks/parse', { markdown })
+export const saveCards = (date, cards) => api.post('/api/marks', { date, cards })
+export const getMyCards = (date) => api.get('/api/marks', { params: { date } })
+export const updateCard = (id, data) => api.put(`/api/marks/${id}`, data)
+export const deleteCard = (id) => api.delete(`/api/marks/${id}`)
+export const getPublicCard = (shareToken) => api.get(`/api/marks/share/${shareToken}`)
+
 // 默认导出实例
 export default api

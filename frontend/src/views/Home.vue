@@ -8,6 +8,7 @@
           <router-link to="/review" class="nav-link">开始复盘</router-link>
           <router-link to="/checkin" class="nav-link">打卡日历</router-link>
           <router-link to="/stats" class="nav-link">数据统计</router-link>
+          <router-link to="/marks" class="nav-link">复盘标记</router-link>
           <div class="user-menu" @click="showUserMenu = !showUserMenu">
             <span>{{ userStore.userInfo?.username || '用户' }}</span>
             <div v-show="showUserMenu" class="dropdown">

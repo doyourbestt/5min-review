@@ -63,6 +63,7 @@ with app.app_context():
     from routes.templates import templates_bp
     from routes.reviews import reviews_bp
     from routes.stats import stats_bp
+    from routes.marks import marks_bp
     # from routes.visualization import viz_router  # 暂时禁用FastAPI路由
     
     # 注册蓝图 - URL前缀统一管理
@@ -70,6 +71,7 @@ with app.app_context():
     app.register_blueprint(templates_bp, url_prefix='/api/templates')
     app.register_blueprint(reviews_bp, url_prefix='/api/reviews')
     app.register_blueprint(stats_bp, url_prefix='/api/stats')
+    app.register_blueprint(marks_bp, url_prefix='/api/marks')
     # app.register_blueprint(viz_router)  # 暂时禁用
     
     # 创建所有数据库表

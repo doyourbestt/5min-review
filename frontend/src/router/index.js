@@ -67,6 +67,16 @@ const routes = [
       requiresAuth: true
     }
   },
+  // 复盘标记模块
+  {
+    path: '/marks',
+    name: 'Marks',
+    component: () => import('../views/Marks.vue'),
+    meta: {
+      title: '复盘标记',
+      requiresAuth: true
+    }
+  },
   // 可视化复盘模块
   {
     path: '/viz',
