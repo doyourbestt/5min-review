@@ -112,12 +112,13 @@ const parseCurrentMarkdown = async () => {
   }
   try {
     const res = await parseMarkdown(form.value.markdown)
+    console.log('解析结果:', res)
     parsedCards.value = res.cards || []
     parseError.value = ''
   } catch (error) {
     console.error('解析失败:', error)
     parsedCards.value = []
-    parseError.value = '解析失败，请检查格式'
+    parseError.value = error.message || '解析失败，请检查格式'
   }
 }
 
