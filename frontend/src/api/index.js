@@ -127,22 +127,22 @@ export const getTrends = (params) => api.get('/api/stats/trends', { params })
 export const getFieldStats = (params) => api.get('/api/stats/fields', { params })
 export const getTemplateUsage = () => api.get('/api/stats/templates')
 
-// 可视化相关
-export const parseMarkdown = (data) => api.post('/api/viz/parse', data)
-export const saveReview = (data) => api.post('/api/viz/save', data)
-export const getReviewByDate = (date) => api.get(`/api/viz/reviews/${date}`)
-export const getAvailableDates = () => api.get('/api/viz/dates')
-export const uploadAvatar = (sharerName, file) => {
-  const formData = new FormData()
-  formData.append('file', file)
-  return api.post(`/api/viz/upload-avatar/${sharerName}`, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' }
-  })
-}
-export const likeInsight = (data) => api.post('/api/viz/like', data)
-export const getLikesByInsight = (insightId) => api.get(`/api/viz/likes/${insightId}`)
-export const getLikesByTopic = (topic) => api.get('/api/viz/likes/by-topic', { params: { topic } })
-export const getLikesBySharer = (sharerName) => api.get(`/api/viz/likes/by-sharer/${sharerName}`)
+// 可视化相关（暂时禁用）
+// export const parseMarkdown = (data) => api.post('/api/viz/parse', data)
+// export const saveReview = (data) => api.post('/api/viz/save', data)
+// export const getReviewByDate = (date) => api.get(`/api/viz/reviews/${date}`)
+// export const getAvailableDates = () => api.get('/api/viz/dates')
+// export const uploadAvatar = (sharerName, file) => {
+//   const formData = new FormData()
+//   formData.append('file', file)
+//   return api.post(`/api/viz/upload-avatar/${sharerName}`, formData, {
+//     headers: { 'Content-Type': 'multipart/form-data' }
+//   })
+// }
+// export const likeInsight = (data) => api.post('/api/viz/like', data)
+// export const getLikesByInsight = (insightId) => api.get(`/api/viz/likes/${insightId}`)
+// export const getLikesByTopic = (topic) => api.get('/api/viz/likes/by-topic', { params: { topic } })
+// export const getLikesBySharer = (sharerName) => api.get(`/api/viz/likes/by-sharer/${sharerName}`)
 
 // 复盘标记相关
 export const parseMarkdown = (markdown) => api.post('/api/marks/parse', { markdown })
