@@ -20,7 +20,7 @@ const getToken = () => localStorage.getItem(TOKEN_KEY) || ''
 // 创建axios实例
 const api = axios.create({
   baseURL: BASE_URL,
-  timeout: 10000, // 10秒超时
+  timeout: 60000, // 60秒超时，Render免费版首次启动较慢
   headers: {
     'Content-Type': 'application/json'
   }
