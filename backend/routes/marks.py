@@ -143,9 +143,16 @@ def save_cards():
         cards: [{name, emoji, content}, ...]
     }
     """
+    import logging
+    logger = logging.getLogger(__name__)
+    
     data = request.get_json()
+    logger.info(f"Received data: {data}")
+    
     date_str = data.get('date')
     cards_data = data.get('cards', [])
+    
+    logger.info(f"date_str: {date_str}, cards_data: {cards_data}")
     
     if not date_str:
         return jsonify({'error': '日期不能为空'}), 400
@@ -159,9 +166,12 @@ def save_cards():
         return jsonify({'error': '日期格式错误，应为YYYY-MM-DD'}), 400
     
     user_id = get_jwt_identity()
+    logger.info(f"user_id: {user_id}")
+    
     saved_cards = []
     
     for card_data in cards_data:
+        logger.info(f"Processing card: {card_data}")
         if not card_data.get('name') or not card_data.get('content'):
             continue
         
@@ -178,7 +188,13 @@ def save_cards():
         db.session.add(card)
         saved_cards.append(card.to_dict())
     
-    db.session.commit()
+    try:
+        db.session.commit()
+        logger.info(f"Successfully saved {len(saved_cards)} cards")
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Database error: {e}")
+        return jsonify({'error': f'数据库错误: {str(e)}'}), 500
     
     return jsonify({
         'message': f'成功保存 {len(saved_cards)} 张卡片',
