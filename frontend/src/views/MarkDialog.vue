@@ -38,6 +38,12 @@
             <div class="preview-content">{{ card.content.substring(0, 100) }}...</div>
           </div>
         </div>
+        <div v-if="parseError" class="parse-error">
+          {{ parseError }}
+        </div>
+        <div v-if="form.markdown.trim() && parsedCards.length === 0 && !parseError" class="parse-tip">
+          正在解析...
+        </div>
       </div>
 
       <div class="dialog-footer">
@@ -73,9 +79,10 @@ const form = ref({
 
 const parsedCards = ref([])
 const isSubmitting = ref(false)
+const parseError = ref('')
 
 const canSave = computed(() => {
-  return form.value.date && form.value.markdown.trim() && parsedCards.value.length > 0
+  return form.value.date && form.value.markdown.trim()
 })
 
 const loadCardData = () => {
@@ -106,9 +113,11 @@ const parseCurrentMarkdown = async () => {
   try {
     const res = await parseMarkdown(form.value.markdown)
     parsedCards.value = res.cards || []
+    parseError.value = ''
   } catch (error) {
     console.error('解析失败:', error)
     parsedCards.value = []
+    parseError.value = '解析失败，请检查格式'
   }
 }
 
@@ -269,6 +278,25 @@ loadCardData()
   font-size: 13px;
   color: var(--text-tertiary);
   line-height: 1.5;
+}
+
+.parse-error {
+  color: var(--error-color);
+  font-size: 13px;
+  margin-top: 12px;
+  padding: 12px;
+  background: #fff2f0;
+  border: 1px solid #ffccc7;
+  border-radius: 6px;
+}
+
+.parse-tip {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  margin-top: 12px;
+  padding: 12px;
+  background: var(--bg-color);
+  border-radius: 6px;
 }
 
 .dialog-footer {
