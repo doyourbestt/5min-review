@@ -15,7 +15,7 @@
 
       <div v-else-if="cards.length === 0" class="empty-state">
         <p>暂无复盘标记</p>
-        <button class="btn btn-primary" @click="showAddDialog =">
+        <button class="btn btn-primary" @click="showAddDialog = true">
           添加第一个标记
         </button>
       </div>
